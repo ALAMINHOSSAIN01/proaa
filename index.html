@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="cb">
+        <table>
+          <tr>
+            <td colspan="4"><input type="text" id="res"></td>
+          </tr>
+        </table>
+        <div class="ff">
+        <table>
+          <tr>
+            <td><input type="button" value="A" onclick="ss()"></td>
+            <td><input type="button" value="(" onclick="ca('(')" ></td>
+            <td><input type="button" value=")" onclick="ca(')')" ></td>
+            <td><input type="button" value="C" onclick="cl()" ></td>
+          </tr>
+          <tr>
+            <td><input type="button" value="7" onclick="ca('7')" ></td>
+            <td><input type="button" value="8" onclick="ca('8')" ></td>
+            <td><input type="button" value="9" onclick="ca('9')" ></td>
+            <td><input type="button" value="-" onclick="ca('-')" ></td>
+          </tr>
+          <tr>
+            <td><input type="button" value="4" onclick="ca('4')" ></td>
+            <td><input type="button" value="5" onclick="ca('5')" ></td>
+            <td><input type="button" value="6" onclick="ca('6')" ></td>
+            <td><input type="button" value="+" onclick="ca('+')" ></td>
+          </tr>
+          <tr>
+            <td><input type="button" value="1" onclick="ca('1')" ></td>
+            <td><input type="button" value="2" onclick="ca('2')" ></td>
+            <td><input type="button" value="3" onclick="ca('3')" ></td>
+            <td><input type="button" value="*" onclick="ca('*')" ></td>
+          </tr>
+          <tr>
+            <td><input type="button" value="0" onclick="ca('0')" ></td>
+            <td><input type="button" value="." onclick="ca('.')" ></td>
+            <td><input type="button" value="/" onclick="ca('/')" ></td>
+            <td><input type="button" value="=" onclick="re()" ></td>
+          </tr>
+        </table>
+        </div>
+    </div>
+
+
+    <div class="im">
+      <div class="but">
+        <button>back</button>
+      </div>
+
+      <div class="brg">
+        <table id="numberTable">
+          <tr>
+            <td><input type="button" value=" "></td>
+            <td><input type="button" value=" "></td>
+            <td><input type="button" value=" "></td>
+            <td><input type="button" value=" "></td>
+            <td><input type="button" value=" "></td>
+        </tr>
+        <tr>
+            <td><input type="button" value=" "></td>
+            <td><input type="button" value=" "></td>
+            <td><input type="button" value=" "></td>
+            <td><input type="button" value=" "></td>
+            <td><input type="button" value=" "></td>
+        </tr>
+        <tr>
+            <td><input type="button" value=" "></td>
+            <td><input type="button" value=" "></td>
+            <td><input type="button" value=" "></td>
+            <td><input type="button" value=" "></td>
+            <td><input type="button" value=" "></td>
+        </tr>
+        <tr>
+            <td><input type="button" value=" "></td>
+            <td><input type="button" value=" "></td>
+            <td><input type="button" value=" "></td>
+            <td><input type="button" value=" "></td>
+            <td><input type="button" value=" "></td>
+        </tr>
+            <td><input type="button" value=" "></td>
+            <td><input type="button" value=" "></td>
+            <td><input type="button" value=" "></td>
+            <td><input type="button" value=" "></td>
+            <td><input type="button" value=" "></td>
+        </table>
+        
+    </div>
+    <div class="but01">
+      <button onclick="dd()">next</button>
+      </div>
+
+
+    <script>
+
+      const RulesBox = document.querySelector(".im");
+      const back = document.querySelector(".but button")
+      function ss(){
+        RulesBox.classList.add("activeIm");
+      }
+      back.onclick = () => {
+      RulesBox.classList.remove("activeIm")
+      }
+
+
+
+      function cl(){
+        document.getElementById("res").value = ""
+      }
+      function ca(op){
+        document.getElementById("res").value += op ;
+      }
+      function re(){
+        var a = document.getElementById("res").value ;
+        var b = eval(a) ;
+        document.getElementById("res").value = b ;
+      }
+
+
+
+
+      
+
+      function dd(){
+        function generateRandomNumbers() {
+          let numbers = [];
+          for (let i = 1; i <= 25; i++) {
+            numbers.push(i);
+          }
+          numbers.sort(() => Math.random() - 0.5);
+          return numbers;
+        }
+
+        const buttons = document.querySelectorAll('#numberTable input[type="button"]');
+
+        const randomNumbers = generateRandomNumbers();
+        buttons.forEach((button, index) => {
+          button.value = randomNumbers[index];
+        });
+      }
+      console.log(dd());
+
+    
+    </script>
+</body>
+</html>
